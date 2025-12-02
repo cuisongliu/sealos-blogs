@@ -49,6 +49,8 @@ Sealos 是一个以 Kubernetes 为内核的云原生操作系统，通过声明�
 
 ## 📚 文档导航
 
+- [kubeconfig 使用指南](docs/kubeconfig-usage.md): 获取、导入、CI/CD 与 App Launchpad 使用示例及安全注意事项
+
 
 
 ## 🚀 快速入门
