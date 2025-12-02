@@ -49,6 +49,8 @@ k9s
 ![](assets/kubeconfig-usage/file-20251202161428945.png)
 ## 3. CI/CD（GitHub Actions）示例
 
+示例代码仓库： https://github.com/labring-sigs/using-kube-sealos
+
 ### 3.1 建议
 - 将 kubeconfig base64 编码后存入 `Actions Secrets`（如 `KUBECONFIG_B64`）。Settings->Secrets and variables -> Actions ->  Repository secrets
 
@@ -139,7 +141,7 @@ spec:
    
 ## 4. Sealos App Launchpad 使用
 
- 接口访问地址：``
+ 接口访问地址：`https://applaunchpad.<domain>/api-docs#tag/default/POST/api/v1/app`
 
 
 ###  4.1 获取Sealos Token
