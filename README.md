@@ -16,40 +16,16 @@ Sealos 云原生技术博客文档集合是 Sealos 官方的专业技术文档�
 
 ### Sealos 平台概述
 
-Sealos 是一个以 Kubernetes 为内核的云原生操作系统，通过声明式编程和云原生技术栈，为用户提供一站式云基础设施管理平台。
+Sealos 是一个以 Kubernetes 为内核的云原生操作系统，通过声明式编程和云原生技术栈，为用户提供一站式云基础
 
-```mermaid
-graph TB
-    subgraph "用户层"
-        A[开发者] --> B[运维工程师]
-        B --> C[企业用户]
-    end
-
-    subgraph "Sealos 核心层"
-        D[Web UI] --> E[API Gateway]
-        E --> F[核心控制器]
-        F --> G[资源调度器]
-    end
-
-    subgraph "基础设施层"
-        G --> H[Kubernetes 集群]
-        H --> I[容器运行时]
-        I --> J[底层基础设施]
-    end
-
-    A --> D
-    B --> D
-    C --> D
-```
-
+![](assets/README/file-20251202144622601.png)
 ### 🔧 核心组件
 
-| 组件                 | 功能描述           | 技术特性               |
-| ------------------ | -------------- | ------------------ |
-| **Sealos CLI**     | 命令行管理工具        | 集群管理、资源编排、应用生命周期管理 |
-| **Desktop Client** | 桌面客户端          | 跨平台支持、图形化管理、实时监控   |
-| **API Server**     | RESTful API 服务 | 高性能、可扩展、完整的 API 覆盖 |
-| **Web Console**    | Web 管理界面       | 响应式设计、多租户支持、插件化架构  |
+| 组件                 | 功能描述    | 技术特性               |
+| ------------------ | ------- | ------------------ |
+| **Sealos CLI**     | 命令行管理工具 | 集群管理、资源编排、应用生命周期管理 |
+| **Sealos Desktop** | 云操作系统   | 跨平台支持、图形化管理、实时监控   |
+
 
 ## 🛠️ 技术栈
 
@@ -65,8 +41,6 @@ graph TB
 
 - **React**: 用户界面框架
 - **TypeScript**: 类型安全的 JavaScript
-- **Ant Design**: 企业级 UI 组件库
-- **Zustand**: 状态管理
 - **Vite**: 构建工具
 
 ### 基础设施
@@ -75,52 +49,17 @@ graph TB
 
 ## 📚 文档导航
 
-### 🚀 快速开始
-- [环境准备](./docs/quickstart/environment.md) - 系统要求和依赖安装
-- [安装指南](./docs/quickstart/installation.md) - 多种部署方式详解
-- [首次使用](./docs/quickstart/getting-started.md) - 基础操作和配置
-- [验证安装](./docs/quickstart/verification.md) - 功能测试和健康检查
 
-### 🏗️ 核心概念
-- [Sealos 架构](./docs/concepts/architecture.md) - 系统架构和设计原理
-- [云原生基础](./docs/concepts/cloud-native.md) - 云原生技术概述
-- [容器化技术](./docs/concepts/containers.md) - Docker 和容器最佳实践
-- [Kubernetes 深度解析](./docs/concepts/kubernetes.md) - K8s 核心概念和机制
-
-### 📦 部署指南
-- [单节点部署](./docs/deployment/single-node.md) - 开发和测试环境
-- [高可用集群](./docs/deployment/ha-cluster.md) - 生产环境部署
-- [混合云部署](./docs/deployment/hybrid-cloud.md) - 多云环境管理
-- [边缘计算](./docs/deployment/edge-computing.md) - 边缘节点部署
-
-### 🛠️ 运维手册
-- [集群管理](./docs/operations/cluster-management.md) - 集群运维和管理
-- [监控告警](./docs/operations/monitoring.md) - 全方位监控解决方案
-- [备份恢复](./docs/operations/backup-restore.md) - 数据备份和灾难恢复
-- [性能调优](./docs/operations/performance.md) - 系统性能优化
-
-### 💻 开发指南
-- [API 文档](./docs/development/api.md) - RESTful API 和 SDK
-- [插件开发](./docs/development/plugins.md) - 扩展插件开发指南
-- [源码分析](./docs/development/source-code.md) - 核心代码解读
-- [贡献指南](./docs/development/contributing.md) - 开源贡献流程
-
-### 🏢 企业应用
-- [行业案例](./docs/enterprise/use-cases.md) - 实际应用场景分析
-- [最佳实践](./docs/enterprise/best-practices.md) - 企业级部署经验
-- [安全指南](./docs/enterprise/security.md) - 安全配置和合规要求
-- [成本优化](./docs/enterprise/cost-optimization.md) - 资源成本控制
 
 ## 🚀 快速入门
 
 ### 前置要求
 
-- **操作系统**: Linux (推荐 Ubuntu 20.04+), macOS, Windows
-- **Go 版本**: >= 1.19
-- **Docker**: >= 20.10
-- **Kubernetes**: >= 1.25 (可选，用于集群模式)
-- **内存**: 至少 2GB RAM
-- **存储**: 至少 10GB 可用空间
+- **操作系统**: Linux (推荐 Ubuntu 20.04+)
+- **Kubernetes**: >= 1.25 
+- **内存**: 至少 16GB RAM
+- **CPU:** 至少6C 
+- **存储**: 至少 50GB 可用空间
 
 ### 快速安装
 
