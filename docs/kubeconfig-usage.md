@@ -53,7 +53,6 @@ k9s
 - 将 kubeconfig base64 编码后存入 `Actions Secrets`（如 `KUBECONFIG_B64`）。Settings->Secrets and variables -> Actions ->  Repository secrets
 
 ![](assets/kubeconfig-usage/file-20251202163239334.png)
- - 使用 `runner.temp` 目录临时落盘，避免持久保存。
 
 ### 3.2 最小示例 Workflow   
 
