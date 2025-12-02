@@ -18,6 +18,10 @@ The documentation SHALL provide a Sealos-specific kubeconfig usage guide coverin
 - **WHEN** applications are deployed via Sealos App Launchpad
 - **THEN** the guide explains how to supply kubeconfig (e.g., secret mounting or context selection) and outlines common deployment or debug operations.
 
+#### Scenario: App Launchpad API automation
+- **WHEN** GitHub Actions workflows manage Launchpad apps via the `POST /api/v1/app` API
+- **THEN** the documentation shows how to call the API with tokens/secrets, example payloads, and notes on minimal permissions.
+
 #### Scenario: Security and lifecycle guidance
 - **WHEN** kubeconfig credentials are issued or rotated
 - **THEN** the documentation outlines permission scope, expiry or rotation guidance, and steps to revoke compromised kubeconfigs.

@@ -140,13 +140,14 @@ spec:
    
 ## 4. Sealos App Launchpad 使用
 
- 接口访问地址：` https://applaunchpad.<DOMAIN>/api-docs#tag/default/POST/api/v1/app`
+ 接口访问地址：``
 
 
 ###  4.1 获取Sealos Token
 
 ```
-cat ~/.kube/sealos-hzh.config | grep token | awk '{print $2}'
+python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$(cat ~/.kube/sealos-hzh.config)"
+
 ```
 
 
