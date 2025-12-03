@@ -11,14 +11,10 @@
             "id": "5e61fb7979516482",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/kubeconfig-usage.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "kubeconfig-usage"
+              "title": "新标签页"
             }
           }
         ]
@@ -155,13 +151,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/kubeconfig-usage.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "kubeconfig-usage 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -185,6 +180,18 @@
   },
   "active": "5e61fb7979516482",
   "lastOpenFiles": [
+    "openspec/changes/add-kubeconfig-usage-doc/tasks.md",
+    "openspec/changes/archive/2025-12-03-add-kubeconfig-usage-doc/specs/kubeconfig-usage-docs/spec.md",
+    "openspec/changes/archive/2025-12-03-add-kubeconfig-usage-doc/specs/kubeconfig-usage-docs",
+    "openspec/changes/archive/2025-12-03-add-kubeconfig-usage-doc/tasks.md",
+    "openspec/changes/archive/2025-12-03-add-kubeconfig-usage-doc/specs",
+    "openspec/changes/archive/2025-12-03-add-kubeconfig-usage-doc/proposal.md",
+    "openspec/changes/archive/2025-12-03-add-kubeconfig-usage-doc",
+    "openspec/specs/kubeconfig-usage-docs/spec.md",
+    "openspec/specs/kubeconfig-usage-docs",
+    "openspec/changes/add-kubeconfig-usage-doc/proposal.md",
+    "openspec/changes/add-kubeconfig-usage-doc/specs/kubeconfig-usage-docs/spec.md",
+    "docs/kubeconfig-usage.md",
     "docs/assets/kubeconfig-usage/file-20251203150718402.png",
     "docs/assets/kubeconfig-usage/file-20251203150209931.png",
     "docs/assets/kubeconfig-usage/file-20251203144017577.png",
@@ -193,14 +200,9 @@
     "docs/assets/kubeconfig-usage/file-20251203141814495.png",
     "docs/assets/kubeconfig-usage/file-20251203141705650.png",
     "docs/assets/kubeconfig-usage/file-20251203141640325.png",
-    "openspec/changes/add-kubeconfig-usage-doc/proposal.md",
-    "openspec/changes/add-kubeconfig-usage-doc/tasks.md",
-    "openspec/changes/add-kubeconfig-usage-doc/specs/kubeconfig-usage-docs/spec.md",
     "openspec/specs/documentation/spec.md",
-    "docs/kubeconfig-usage.md",
     "docs/assets/kubeconfig-usage/file-20251202164856437.png",
     "docs/assets/kubeconfig-usage/file-20251202164756121.png",
-    "docs/assets/kubeconfig-usage/file-20251202163239334.png",
     "docs/assets/kubeconfig-usage",
     "docs/assets",
     "openspec/project.md",
@@ -210,12 +212,8 @@
     "openspec/changes/add-kubeconfig-usage-doc",
     "openspec/changes/create-readme/tasks.md",
     "openspec/changes/archive/2025-12-02-create-readme/specs/documentation/spec.md",
-    "openspec/changes/archive/2025-12-02-create-readme/specs/documentation",
     "openspec/changes/archive/2025-12-02-create-readme/tasks.md",
-    "openspec/changes/archive/2025-12-02-create-readme/specs",
     "openspec/changes/archive/2025-12-02-create-readme/proposal.md",
-    "openspec/changes/archive/2025-12-02-create-readme",
-    "openspec/specs/documentation",
     "openspec/changes/create-readme/proposal.md",
     "openspec/changes/create-readme/specs/documentation/spec.md",
     "README.md",
