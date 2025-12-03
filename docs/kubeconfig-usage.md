@@ -139,30 +139,150 @@ spec:
 - sealos平台进入终端应用看pod是否正常启动/本地直接执行kubectl get pod 查看
 	![](assets/kubeconfig-usage/file-20251202164856437.png)
    
-## 4. Sealos App Launchpad 使用
+## 4. Sealos App Launchpad API 使用
 
- 接口访问地址：`https://applaunchpad.<domain>/api-docs#tag/default/POST/api/v1/app`
-
+ 接口访问地址： `https://applaunchpad.<domain>/api/v2alpha/doc#tag/mutation`
 
 ###  4.1 获取Sealos Token
 
 ```
-python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$(cat ~/.kube/sealos-hzh.config)"
+python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$(cat ~/.kube/sealos-<cluster>.config)"
 
 ```
 
 
 ### 4.2 访问 接口文档
 
+注意：
+1. HPA和replicas不能同时存在
+2. 如果环境没有GPU，gpu.amount设置为0
+3. 使用公有域名的场景需要先创建好后期再更新，需要提前获取portName，如果portName名字不存在则认为创建，否则认为更新
+#### 创建资源
+
+```
+curl https://applaunchpad.hzh.sealos.run/api/v2alpha/app \
+  --request POST \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: YOUR_SECRET_TOKEN' \
+  --data '{
+  "name": "hello-world-app",
+  "image": {
+    "imageName": "nginx"
+  },
+  "launchCommand": {},
+  "quota": {
+    "replicas": 1,
+    "cpu": 0.2,
+    "memory": 0.5,
+    "gpu": {
+      "vendor": "nvidia",
+      "type": "",
+      "amount": 0
+    }
+  },
+  "ports": [
+    {
+      "number": 80,
+      "protocol": "http",
+      "isPublic": true
+    }
+  ],
+  "env": [],
+  "storage": [],
+  "configMap": []
+}'
+```
+
+#### 查询资源
+
+```
+curl https://applaunchpad.hzh.sealos.run/api/v2alpha/app/{name} \
+  --header 'Authorization: YOUR_SECRET_TOKEN'
+```
 
 
-- 在 Launchpad 创建/编辑应用时，将 kubeconfig 以 **Secret** 方式注入容器（文件挂载到 `/app/.kube/config` 或设置 `KUBECONFIG` 环境变量）。
-- 为应用选择正确的 **context** 或默认命名空间，避免误操作其他集群/命名空间。
-- 部署/调试常见操作：
-  - 初始化：在启动脚本中执行 `kubectl get ns` 确认连通性。
-  - 应用发布：`kubectl apply -f <manifest>` 或 `helm upgrade --install ...`。
-  - 诊断：`kubectl describe pod/<name> -n <ns>`、`kubectl logs <pod> -n <ns>`。
-- 如应用仅需访问单一命名空间，确保 kubeconfig 和 RBAC 仅授予该命名空间权限。
+#### 更新资源
+
+```
+curl https://applaunchpad.hzh.sealos.run/api/v2alpha/app/{name} \
+  --request PATCH \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: YOUR_SECRET_TOKEN' \
+  --data '{
+  "name": "hello-world-app",
+  "image": {
+    "imageName": "nginx"
+  },
+  "launchCommand": {},
+  "quota": {
+    "replicas": 1,
+    "cpu": 0.2,
+    "memory": 0.5,
+    "gpu": {
+      "vendor": "nvidia",
+      "type": "",
+      "amount": 0
+    }
+  },
+  "ports": [
+    {
+      "number": 80,
+      "protocol": "http",
+      "isPublic": true,
+      "name": "idekemqmnmhb"
+    }
+  ],
+  "env": [],
+  "storage": [],
+  "configMap": []
+}'
+```
+
+
+## 5. Sealos App Launchpad CI/CD 对接
+
+### 5.1 登录sealos平台
+![](assets/kubeconfig-usage/file-20251203143819336.png)
+### 5.2 新建应用
+![](assets/kubeconfig-usage/file-20251203143856504.png)
+
+### 5.3 创建应用
+
+![](assets/kubeconfig-usage/file-20251203150209931.png)
+### 5.4 导出配置
+点击变更并导出yaml
+![](assets/kubeconfig-usage/file-20251203150718402.png)
+
+### 5.5 对接GitHub Actions
+
+```
+name: Deploy app with kubectl  
+  
+on:  
+  workflow_dispatch:  
+jobs:  
+  deploy:  
+    runs-on: ubuntu-latest  
+    env:  
+      KUBECONFIG: /tmp/${{ github.run_id }}/kubeconfig  
+    steps:  
+      - uses: actions/checkout@v4  
+      - name: Setup kubectl  
+        uses: azure/setup-kubectl@v4  
+      - name: Write kubeconfig  
+        run: |   
+          mkdir -p "$(dirname "$KUBECONFIG")"  
+          echo "${KUBECONFIG_B64}" | base64 -d > "$KUBECONFIG"  
+        env:  
+          KUBECONFIG_B64: ${{ secrets.KUBECONFIG_B64 }}  
+      - name: Sanity check  
+        run: kubectl get pod  
+      - name: Deploy  
+        run: kubectl apply -f applaunchpad/hello-world.yaml
+```
+
+
+
 
 
 ## 5. 常见问题与排查
