@@ -90,45 +90,45 @@ jobs:
 ### 3.3 nginx部署配置文件
 
 ```
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: hello-world  
-  labels:  
-    app: hello-world  
-spec:  
-  replicas: 1  
-  revisionHistoryLimit: 1  
-  selector:  
-    matchLabels:  
-      app: hello-world  
-  strategy:  
-    type: RollingUpdate  
-    rollingUpdate:  
-      maxUnavailable: 0  
-      maxSurge: 1  
-  template:  
-    metadata:  
-      labels:  
-        app: hello-world  
-    spec:  
-      automountServiceAccountToken: false  
-      containers:  
-        - name: hello-world  
-          image: nginx  
-          env: []  
-          resources:  
-            requests:  
-              cpu: 20m  
-              memory: 25Mi  
-            limits:  
-              cpu: 200m  
-              memory: 256Mi  
-          ports:  
-            - containerPort: 80  
-              name: port  
-          imagePullPolicy: Always  
-          volumeMounts: []  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-nginx
+  labels:
+    app: hello-nginx
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: hello-nginx
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hello-nginx
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: hello-nginx
+          image: nginx
+          env: []
+          resources:
+            requests:
+              cpu: 20m
+              memory: 25Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          ports:
+            - containerPort: 80
+              name: port
+          imagePullPolicy: Always
+          volumeMounts: []
       volumes: []
 ```
 
