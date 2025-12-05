@@ -287,7 +287,6 @@ jobs:
 
 ## 5. 常见问题与排查
 - **证书过期/时钟偏差**：`kubectl config view --minify` 检查证书截止时间；确保 CI 机器 NTP 同步。
-- **RBAC 拒绝**：`kubectl auth can-i <verb> <resource> ；调整角色或命名空间。
 - **网络不通/域名解析失败**：在 runner 或容器中 `curl -k https://<domain>:6443` 或 `ping <domain>；检查出站策略与代理。
 
 ## 6. 参考
